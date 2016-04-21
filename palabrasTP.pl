@@ -1,16 +1,18 @@
 :- use_module(library(clpfd), except([transpose/2])).
 
-pista(2,['c','o','r','t','e'], 1).
+pista(2,['c','o','r','t','e'],1).
 pista(1,['m','a','n','d','e'],2).
 pista(1,['c','o','n','d','e'],2).
 pista(1,['m','e','l','l','o'],2).
 pista(1,['s','a','l','t','o'],3).
 
+/*--------DEFINICIONES--------*/
 % list_transpose Transponer la matriz para que se obtener las columnas
 
+/*-----------MAIN-----------------*/
+palabras:- lista_pistas_palabra(1,R), clpfd:lists_transpose(R,Trans), print(Trans), ocurre(c,Trans,L), print(L).
 
-%palabra:- lista_pistas_palabra(1,R), X = [A,B,C,D,E], clpfd:lists_transpose(R, Transp), assign_digits(X,Transp), write(X).
-
+/*----------MANEJO DE LISTAS ----------------*/
 % Determina si lo que recibe es una lista
 lista([]):-!.
 lista([X|Y]):-lista(Y).
@@ -27,8 +29,9 @@ cantidad_pistas_palabra(Bloque,R):-bagof(R, B^pista(Bloque, B, R), R).
 %agrupar por palabras
 lista_pistas_palabra(Bloque,R):-bagof(R, C^pista(Bloque, R, C), R).
 
-%para probar que hace la transpuesta
-%lista_pistas_palabra(1,R), clpfd:lists_transpose(R,Trans)
+/*-------------------------- ASIG -------------------*/
+
+%palabra:- lista_pistas_palabra(1,R), X = [A,B,C,D,E], clpfd:lists_transpose(R, Transp), assign_digits(X,Transp), write(X).
 
 %Ejemplo sendmoremoney
 /*smm :-
@@ -41,8 +44,9 @@ lista_pistas_palabra(Bloque,R):-bagof(R, C^pista(Bloque, R, C), R).
                   1000*M + 100*O + 10*R + E =:=
         10000*M + 1000*O + 100*N + 10*E + Y,
         write(X).
-
 */
+
+
 select(X, [X|R], R).
 select(X, [Y|Xs], [Y|Ys]):- select(X, Xs, Ys).
 
@@ -50,5 +54,6 @@ assign_digits([], _List).
 assign_digits([D|Ds], List):-
         select(D, List, NewList),
         assign_digits(Ds, NewList).
+
 
 
