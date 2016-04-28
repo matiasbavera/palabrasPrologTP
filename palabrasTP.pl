@@ -6,6 +6,37 @@ pista(1, ['c', 'o', 'n', 'd', 'e'], 2).
 pista(1, ['m', 'e', 'l', 'l', 'o'], 2).
 pista(1, ['s', 'a', 'l', 't', 'o'], 3).
 
+pista(2, ['p', 'a', 's', 't', 'a'], 1).
+pista(2, ['c', 'a', 'n', 't', 'a'], 2).
+pista(2, ['p', 'a', 'r', 'd', 'o'], 2).
+pista(2, ['p', 'e', 'n', 'd', 'e'], 2).
+pista(2, ['c', 'e', 'r', 'r', 'o'], 3).
+
+pista(3, ['c', 'o', 'r', 't', 'e'], 1).
+pista(3, ['c', 'a', 'l', 'm', 'a'], 2).
+pista(3, ['c', 'e', 'l', 'd', 'a'], 2).
+pista(3, ['b', 'a', 's', 't', 'a'], 2).
+pista(3, ['b', 'a', 'n', 'd', 'a'], 3).
+
+pista(4, ['t', 'a', 'b', 'l', 'a'], 1).
+pista(4, ['c', 'e', 'l', 'd', 'a'], 2).
+pista(4, ['m', 'a', 'l', 'l', 'a'], 2).
+pista(4, ['c', 'e', 'n', 's', 'o'], 2).
+pista(4, ['s', 'a', 'l', 't', 'o'], 3).
+
+pista(5, ['c', 'a', 'b', 'l', 'e'], 1).
+pista(5, ['b', 'a', 'r', 'r', 'e'], 2).
+pista(5, ['b', 'a', 's', 't', 'a'], 2).
+pista(5, ['c', 'o', 'r', 't', 'e'], 2).
+pista(5, ['c', 'o', 'p', 'l', 'a'], 3).
+
+%sexta matriz con las palabras encontradas. Esta aca con el fin de probar encontrar su palabra oculta.(no sale ): )
+pista(6, ['c', 'a', 'l', 'd', 'o'], 1).
+pista(6, ['c', 'e', 'r', 'd', 'a'], 2).
+pista(6, ['b', 'a', 'l', 'd', 'e'], 2).
+pista(6, ['s', 'e', 'l', 'l', 'o'], 3).
+pista(6, ['b', 'o', 'r', 'l', 'a'], 3).
+
 % Cargar pistas
 cantidad_pistas_palabra(Bloque, R):-bagof(R, B^pista(Bloque, B, R), R).
 lista_pistas_palabra(Bloque, R):-bagof(R, C^pista(Bloque, R, C), R).
@@ -28,9 +59,9 @@ comparar([X|L],[M|N], R):-
 	comparar(L,N,R),!.
 
 
-resolver(M):-
-	lista_pistas_palabra(1, P),
-	cantidad_pistas_palabra(1, K),
+resolver(X,M):- %X el numero de la matriz, M palabra encontrada
+	lista_pistas_palabra(X, P),
+	cantidad_pistas_palabra(X, K),
 	clpfd:transpose(P, T),
 
 	% Pistas
