@@ -64,8 +64,7 @@ comparar([X|L],[X|N], R):-
 comparar([_|L],[_|N], R):-
 	comparar(L,N,R),
 	!.
-comparar([_|L],[_|N], R):-
-	comparar(L,N,R),!.
+
 
 
 resolver(X,M):-
@@ -79,11 +78,11 @@ resolver(X,M):-
 	% Cantidad por fila
 	K = [K1, K2, K3, K4, K5],
 
-	distinct(T1,Rec1), %print(Rec1),
-	distinct(T2,Rec2), %print(Rec2),
-	distinct(T3,Rec3), %print(Rec3),
-	distinct(T4,Rec4), %print(Rec4),
-	distinct(T5,Rec5), %print(Rec5),
+	distinct(T1,Rec1),
+	distinct(T2,Rec2),
+	distinct(T3,Rec3),
+	distinct(T4,Rec4),
+	distinct(T5,Rec5),
 
 %	Recortado = [Rec1, Rec2, Rec3, Rec4, Rec5],
 	% Iterar sobre las letras correspondientes
@@ -94,12 +93,6 @@ resolver(X,M):-
 	asignar_letra(Rec5, E),
 	M=[A, B, C, D, E],
 
-	% asignar_letra(T1, A),
-	% asignar_letra(T2, B),
-	% asignar_letra(T3, C),
-	% asignar_letra(T4, D),
-	% asignar_letra(T5, E),
-	% M=[A, B, C, D, E],
 
 	% Validar que las letras son correctas
 	comparar(M, F1, K1),
@@ -121,13 +114,21 @@ resolver2(X,Z,M):-
 	% Cantidad por fila
 	K = [K1, K2, K3, K4, K5],
 
+	distinct(T1,Rec1),
+	distinct(T2,Rec2),
+	distinct(T3,Rec3),
+	distinct(T4,Rec4),
+	distinct(T5,Rec5),
+
+%	Recortado = [Rec1, Rec2, Rec3, Rec4, Rec5],
 	% Iterar sobre las letras correspondientes
-	asignar_letra(T1, A),
-	asignar_letra(T2, B),
-	asignar_letra(T3, C),
-	asignar_letra(T4, D),
-	asignar_letra(T5, E),
+	asignar_letra(Rec1, A),
+	asignar_letra(Rec2, B),
+	asignar_letra(Rec3, C),
+	asignar_letra(Rec4, D),
+	asignar_letra(Rec5, E),
 	M=[A, B, C, D, E],
+
 	%write(M),write("\n"),
 	% Validar que las letras son correctas
 	comparar(M, F1, K1),
