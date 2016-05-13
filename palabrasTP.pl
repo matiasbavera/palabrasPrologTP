@@ -52,8 +52,8 @@ member1(X,[_|T]) :- member1(X,T).
 
 % Iteradores de pistas
 asignar_letra([], _):-false.
-asignar_letra([H|T], H):-true.
-asignar_letra([H|T], R):-asignar_letra(T, R).
+asignar_letra([H|_], H):-true.
+asignar_letra([_|T], R):-asignar_letra(T, R).
 
 % Validaci�n de letras
 comparar([],[],0):-!.
@@ -61,10 +61,10 @@ comparar([X|L],[X|N], R):-
 	comparar(L,N,T),
 	!,
 	R is T+1.
-comparar([X|L],[M|N], R):-
+comparar([_|L],[_|N], R):-
 	comparar(L,N,R),
 	!.
-comparar([X|L],[M|N], R):-
+comparar([_|L],[_|N], R):-
 	comparar(L,N,R),!.
 
 
@@ -79,11 +79,11 @@ resolver(X,M):-
 	% Cantidad por fila
 	K = [K1, K2, K3, K4, K5],
 
-	distinct(T1,Rec1), print(Rec1),
-	distinct(T2,Rec2), print(Rec2),
-	distinct(T3,Rec3), print(Rec3),
-	distinct(T4,Rec4), print(Rec4),
-	distinct(T5,Rec5), print(Rec5),
+	distinct(T1,Rec1), %print(Rec1),
+	distinct(T2,Rec2), %print(Rec2),
+	distinct(T3,Rec3), %print(Rec3),
+	distinct(T4,Rec4), %print(Rec4),
+	distinct(T5,Rec5), %print(Rec5),
 
 %	Recortado = [Rec1, Rec2, Rec3, Rec4, Rec5],
 	% Iterar sobre las letras correspondientes
