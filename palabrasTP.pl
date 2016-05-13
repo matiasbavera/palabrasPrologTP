@@ -145,4 +145,4 @@ fin(R):-
 	resolver(5,N5),
 	N = [N1,N2,N3,N4,N5],
  write(N),
-	resolver2(6,N,R).
+	resolver2(6,N,R),!.
