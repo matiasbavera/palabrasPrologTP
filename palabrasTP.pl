@@ -41,7 +41,7 @@ pista(6, [], 3).
 % Cargar pistas
 cantidad_pistas_palabra(Bloque, R):-bagof(R, B^pista(Bloque, B, R), R).
 lista_pistas_palabra(Bloque, R):-bagof(R, C^pista(Bloque, R, C), R).
-lista_sin_repetidos(Bloque,R):-setof(R, C^pista(Bloque, R, C), R).
+
 
 distinct([],[]).
 distinct([H|T],C) :- member1(H,T),!, distinct(T,C).
